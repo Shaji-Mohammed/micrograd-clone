@@ -31,3 +31,12 @@ x1w1x2w2 = x1w1 + x2w2; x1w1x2w2.label="x1w1 + x2w2"
 n = x1w1x2w2 + b; n.label="n"
 o = n.tanh(); o.label = 'o'
 print(draw_dot(o))
+
+# Ex. 3
+a = Value(-2.0, label='a')
+b =  Value(3.0, label='b')
+c = a *b ; c.label='c'
+d = a + b; d.label = 'd'
+e = d * c; e.label='e'
+e.backward()
+draw_dot(e)
