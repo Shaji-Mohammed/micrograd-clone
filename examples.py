@@ -29,4 +29,5 @@ x1w1 = x1*w1; x1w1.label="x1*w1"
 x2w2 = x2*w2; x2w2.label = "x2*w2"
 x1w1x2w2 = x1w1 + x2w2; x1w1x2w2.label="x1w1 + x2w2"
 n = x1w1x2w2 + b; n.label="n"
-print(draw_dot(n))
+o = n.tanh(); o.label = 'o'
+print(draw_dot(o))
