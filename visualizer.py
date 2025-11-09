@@ -19,7 +19,7 @@ def draw_dot(root):
     for n in nodes:
         uid = str(id(n))
 
-        dot.node(name = uid, label = "{data %.4f}" % (n.data, ), shapre='record')
+        dot.node(name = uid, label = "{ %s | data %.4f | grad %.4f }" % (n.label, n.data, n.grad), shape='record')
         if n._op:
             dot.node(name = uid + n._op, label = n._op)
             dot.edge(uid + n._op, uid)
