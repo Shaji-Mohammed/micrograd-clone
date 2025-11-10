@@ -6,6 +6,7 @@
 
 # Ex. 1 -----
 from engine import Value
+from neural_net import MLP
 from visualizer import draw_dot
 
 
@@ -44,3 +45,31 @@ d = a + b; d.label = 'd'
 e = d * c; e.label='e'
 e.backward()
 draw_dot(e)
+
+# Real example
+n = MLP(3, [4, 4, 1])
+
+xs = [
+    [2.0, 3.0, -1.0],
+    [3.0, -1.0, 0.5],
+    [0.5, 1.0, 1.0],
+    [1.0, 1.0, -1.0],
+]
+
+ys = [1.0, -1.0, -1.0, 1.0]
+
+for k in range(50):
+    # forward pass
+    y_pred = [n(x) for x in xs]
+    loss = sum((y_out - ygt)**2 for ygt, y_out in zip(ys, y_pred))
+
+    # backward pass
+    for p in n.parameters():
+        p.grad = 0.0
+    loss.backward()
+
+    # update
+    for p in n.parameters():
+        p.data += -0.1 * p.grad
+    
+    print(k, loss.data)

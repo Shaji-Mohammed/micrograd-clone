@@ -24,7 +24,10 @@ class Value:
         return out
     
     def __sub__(self, other):
-        return self.data + (-other)
+        return self + (-other)
+
+    def __radd__(self, other):
+        return self + other
     
     def __mul__(self, other):
         other = other if isinstance(other, Value) else Value(other)
@@ -55,6 +58,9 @@ class Value:
     
     def __truediv__(self, other):
         return self * other ** -1
+
+    def __neg__(self):
+        return self * -1
     
     def tanh(self):
         x = self.data
