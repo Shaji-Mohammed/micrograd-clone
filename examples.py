@@ -5,6 +5,10 @@
 """
 
 # Ex. 1 -----
+from engine import Value
+from visualizer import draw_dot
+
+
 a = Value(4.0, label='a')
 b = Value(5.0, label='b')
 c = a + b; c.label = 'c'
